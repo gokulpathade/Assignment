@@ -1,22 +1,35 @@
 
 
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Navbar() {
   
 
 
   return (
+   <div>
 
-    <div>
+    <ul className="listfirst">
+    <li className="lif"><a className="active" /></li> 
+    <li className="lif"><a>Human Resource Management System</a></li>
+    {/* <li class="lif"><a> Wecare@goldsgym.in</a></li> */}
+    {/* <li><a href="#about">About</a></li> */}
+  </ul>
+
+
+
+
+
+    
 <nav className="navbar navbar-expand-lg navbar-blue bg-primary">
-  <a className="navbar-brand" href="#">HRMS</a>
+  <a className="navbar-brand" href="/">HRMS</a>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
-  <button  className="btn btn-primary">Add</button>
-  <button className="btn btn-primary">Update</button>
-  <button className="btn btn-primary">Delete</button>
+  <Link className="btn btn-primary mx-2" to="/AddEmployee">ADD</Link>
+  <button className="btn btn-primary mx-2">Update</button>
+  <button className="btn btn-primary mx-2">Delete</button>
   {/* <button className="btn btn-outline-light">AddUser</button> */}
 
 

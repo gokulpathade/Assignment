@@ -11,3 +11,47 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+
+
+/* home page css here  */
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.lif {
+  float: left;
+}
+
+.lif a {
+  display: block;
+  color: rgb(2, 1, 1);
+  padding: 14px 16px;
+  text-decoration:none;
+  padding-left: 230px;
+  text-transform: uppercase;
+}
+
+.lif a:hover {
+  background-color:rgb(243, 222, 28);
+}
+.listfirst{
+  background-color: #f3e40f;
+}
+
+
+lebal{
+  padding: 100px;
+}
+
+
+
+.body {
+  background-color: rgb(232, 229, 226);
+  text-align: center;
+}
