@@ -1,51 +1,45 @@
-
-
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
-  
-
-
   return (
-   <div>
+    <div>
+      <ul className="listfirst">
+        <li className="lif">
+          <a className="active" />
+        </li>
+        <li className="lif">
+          <a>Human Resource Management System</a>
+        </li>
+        {/* <li class="lif"><a> Wecare@goldsgym.in</a></li> */}
+        {/* <li><a href="#about">About</a></li> */}
+      </ul>
 
-    <ul className="listfirst">
-    <li className="lif"><a className="active" /></li> 
-    <li className="lif"><a>Human Resource Management System</a></li>
-    {/* <li class="lif"><a> Wecare@goldsgym.in</a></li> */}
-    {/* <li><a href="#about">About</a></li> */}
-  </ul>
-
-
-
-
-
-    
-<nav className="navbar navbar-expand-lg navbar-blue bg-primary">
-  <a className="navbar-brand" href="/">HRMS</a>
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button>
-  <Link className="btn btn-primary mx-2" to="/AddEmployee">ADD</Link>
-  <button className="btn btn-primary mx-2">Update</button>
-  <button className="btn btn-primary mx-2">Delete</button>
-  {/* <button className="btn btn-outline-light">AddUser</button> */}
-
-
-
-
-
-</nav>
+      <nav className="navbar navbar-expand-lg navbar-blue bg-primary">
+        <a className="navbar-brand" href="/">
+          HRMS
+        </a>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <Link className="btn btn-primary mx-3" to="/AddEmployee">
+          ADD
+        </Link>
+        <button className="btn btn-primary mx-3">Update</button>
+        <button className="btn btn-primary mx-3">Delete</button>
+        {/* <button className="btn btn-outline-light">AddUser</button> */}
+      </nav>
     </div>
-
-  )
+  );
 }
-
-
-
-
-
 
 // // import React, { useState, useEffect } from 'react';
 // // import axios from 'axios';
@@ -54,53 +48,9 @@ export default function Navbar() {
 
 // const EmployeeList = () =>{
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // // //   const [E, setItems] = useState([]);
 // //    const [loading, setLoading] = useState(true);
 // //    const [error, setError] = useState('');
-
-
 
 // // const [employees, setEmp]=useState()
 // // const [id, setid] = useState("");
@@ -187,26 +137,25 @@ export default function Navbar() {
 // //       <h2>List Of Employees Data</h2>
 // //         <table className='table table-bordered table-striped'>
 // //             <thead>
-                // <th>Employee id</th>
-                // <th>Employee Name</th>
-                // <th>Employee Email</th>
-                // <th>Employee Company Name</th>
-                // <th>Employee Date Of Joing</th>
-                // <th>Employee Address</th> 
-                // <th>Employee Gender</th>
-                // <th>Employee Date Of Birth</th>
-                // <th>Employee Alternative Mobile </th>
-                // <th>Employee Course</th>
-                // <th>Employee Tech Skills</th>
-                // <th>Employee Skill Rating </th>
-                
+// <th>Employee id</th>
+// <th>Employee Name</th>
+// <th>Employee Email</th>
+// <th>Employee Company Name</th>
+// <th>Employee Date Of Joing</th>
+// <th>Employee Address</th>
+// <th>Employee Gender</th>
+// <th>Employee Date Of Birth</th>
+// <th>Employee Alternative Mobile </th>
+// <th>Employee Course</th>
+// <th>Employee Tech Skills</th>
+// <th>Employee Skill Rating </th>
 
 // //             </thead>
 // //       <tbody>
 // //         {employees.map((employee) => (
 // //           <tr key={employee.id}>
 // //             {/* {Emp.name} - {Emp.description} */}
-// //         <td>{employee.id}</td>    
+// //         <td>{employee.id}</td>
 // //         <td>{employee.empName}</td>
 // //         <td>{employee.empEmail}</td>
 // //         <td>{employee.CompanyName}</td>
@@ -251,8 +200,6 @@ export default function Navbar() {
 // };
 
 // export default EmployeeList
-
-
 
 // // import React, { useState, useEffect } from 'react';
 // // import axios from 'axios';
@@ -353,7 +300,6 @@ export default function Navbar() {
 // //       <h2>Read</h2>
 // //  */}
 
-
 // //       <h2>List Of Employees Data</h2>
 // //         <table className='table table-bordered table-striped'>
 // //             <thead>
@@ -362,14 +308,13 @@ export default function Navbar() {
 // //                 <th>Employee Email</th>
 // //                 <th>Employee Company Name</th>
 // //                 <th>Employee Date Of Joing</th>
-// //                 <th>Employee Address</th> 
+// //                 <th>Employee Address</th>
 // //                 <th>Employee Gender</th>
 // //                 <th>Employee Date Of Birth</th>
 // //                 <th>Employee Alternative Mobile </th>
 // //                 <th>Employee Course</th>
 // //                 <th>Employee Tech Skills</th>
 // //                 <th>Employee Skill Rating </th>
-                
 
 // //             </thead>
 // //             <tbody>
@@ -377,7 +322,7 @@ export default function Navbar() {
 // //                     data.map(
 // //                       (employee)=>(
 // //                         <tr key={employee.id}>
-//                         //     <td>{employee.id}</td>    
+//                         //     <td>{employee.id}</td>
 //                         //     <td>{employee.empName}</td>
 //                         //     <td>{employee.empEmail}</td>
 //                         //     <td>{employee.CompanyName}</td>
@@ -400,7 +345,6 @@ export default function Navbar() {
 
 // //         </table>
 
-
 // //       <ul>
 // //         {data.map((item) => (
 // //           <li key={item.id}>
@@ -421,7 +365,7 @@ export default function Navbar() {
 // // //import RegisterForm from './RegisterForm'
 
 // // const EmployeeList = () => {
-  
+
 // //   const [employees, setEmployees]=useState()
 // //   const [id, setid] = useState("");
 // //   const [empName, setempName] = useState("");
@@ -437,8 +381,6 @@ export default function Navbar() {
 // //   const [empTechSkill, setempTechSkills] = useState("");
 // //   const [empRating, setempRating] = useState("");
 
-
-
 // // //   <td>{employee.empName}</td>
 // // //   <td>{employee.empEmail}</td>
 // // //   <td>{employee.CompanyName}</td>
@@ -451,10 +393,10 @@ export default function Navbar() {
 // // //   <td>{employee.empCourse}</td>
 // // //   <td>{employee.empTechSkill}</td>
 // // //   <td>{employee.empRating}</td>
-  
+
 // //   useEffect(()=>{
 // // Employeeservices.getAllEmployee().then
-// // ((response)=>{ 
+// // ((response)=>{
 // //     setEmployees(response.data)
 // //     CSSTransformValue.log(response.data);
 
@@ -462,8 +404,7 @@ export default function Navbar() {
 // //     console.log(error);
 // // }
 // //     )  },[])
-  
-  
+
 // //     return (
 // //     <div className='container'>
 //         // <h2>List Of Employees Data</h2>
@@ -474,14 +415,13 @@ export default function Navbar() {
 //         //         <th>Employee Email</th>
 //         //         <th>Employee Company Name</th>
 //         //         <th>Employee Date Of Joing</th>
-//         //         <th>Employee Address</th> 
+//         //         <th>Employee Address</th>
 //         //         <th>Employee Gender</th>
 //         //         <th>Employee Date Of Birth</th>
 //         //         <th>Employee Alternative Mobile </th>
 //         //         <th>Employee Course</th>
 //         //         <th>Employee Tech Skills</th>
 //         //         <th>Employee Skill Rating </th>
-                
 
 //         //     </thead>
 //         //     <tbody>
@@ -489,7 +429,7 @@ export default function Navbar() {
 //         //             employees.map(
 //         //               employee=>
 //         //                 <tr key={employee.id}>
-//         //                     <td>{employee.id}</td>    
+//         //                     <td>{employee.id}</td>
 //         //                     <td>{employee.empName}</td>
 //         //                     <td>{employee.empEmail}</td>
 //         //                     <td>{employee.CompanyName}</td>
@@ -510,7 +450,7 @@ export default function Navbar() {
 //         //     </tbody>
 
 //         // </table>
-      
+
 // //     </div>
 // //   )
 // // }
