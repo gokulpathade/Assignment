@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 export default function Navbar() {
   return (
@@ -14,6 +15,7 @@ export default function Navbar() {
         {/* <li class="lif"><a> Wecare@goldsgym.in</a></li> */}
         {/* <li><a href="#about">About</a></li> */}
       </ul>
+      
 
       <nav className="navbar navbar-expand-lg navbar-blue bg-primary">
         <a className="navbar-brand" href="/">

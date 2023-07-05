@@ -1,47 +1,78 @@
 import React, { useEffect, useState } from "react";
+// import { Link } from "react-router-dom";
+
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
+// import Delete from "@mui/icons-material/Delete";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const [employee, setEmployee] = useState([]);
-  // const navigate = useNavigate();
-  const baseURL = "http://localhost:8080/api/";
+  const navigate = useNavigate();
+  const baseURL = "http://localhost:8080/api";
 
   // fetch Employee Data Here From Api
-  // const SetEmployeeData=()=>{
-  // axios.get(baseURL+"/getEmp").then((response)=>{
-  // setEmployee(response.data);
-  // }).catch(error=>{ alert("somethings wrong"+error);
-  // });
-  //
-  // }
-
+  const SetEmployeeData=()=>{
+  axios.get(baseURL+"/getEmp").then((response)=>{
+  setEmployee(response.data);
+  }).catch(error=>{ alert("somethings wrong"+error);
+  });
+  
+  }
+// 
   // load Employee Data Here From Api
   useEffect(() => {
-    setEmplo();
+    SetEmployeeData();
+
+    // setEmplo();
     // setEmployee();
   }, []);
 
-  //
-  //
-  // const removeEmp=(id)=>{
-  // axios.delete(baseURL+"/deleteEmp/"+ id).then((response)=>{
-  // alert("employee data"+ id +"deleted successfully !!!");
+  
+  
+  const removeEmp=(id)=>{
+  axios.delete(baseURL+"/deleteEmp/"+ id).then((response)=>{
+  alert("Employee ID Number "+ id +" deleted successfully !!!");
   // setEmployee();
-  // navigate("/home")
-  // }).catch(error =>{
-  // alert("error ocurred in remove Employee:"+error);
-  // });
-  //
-  // }
-  //
+  SetEmployeeData();
+  navigate("/")
+  }).catch(error =>{
+  alert("error ocurred in remove Employee:"+error);
+  });
+  
+  }
+  
 
+// 
+  // const updateEmp=(id)=>{
+    // axios.update(baseURL+ "/updateEmp/" + id);
+    // navigate("./AddEmployee.js")
+//  
+  // }
+// 
+
+
+
+  const updateEmp = (id) => {
+    axios
+      .put(baseURL + "/updateEmp/" + id)  // Assuming you want to send a PUT request to update employee data
+      .then((response) => {
+        navigate("./UpdateEmp.js");
+      })
+      .catch((error) => {
+        alert("Error occurred while updating employee: " + error);
+      });
+  };
+
+// 
+
+
+// 
   //
   // fetch Employee Data Here From Api
-  const setEmplo = async () => {
-    const baseURL = await axios.get("http://localhost:8080/api/getEmp");
-    setEmployee(baseURL.data);
-  };
+  // const setEmplo = async () => {
+    // const baseURL = await axios.get("http://localhost:8080/api/getEmp");
+    // setEmployee(baseURL.data);
+  // };
   //
   return (
     <div className="container">
@@ -130,14 +161,19 @@ export default function Home() {
                 <td>{employee.empTechSkill}</td>
                 <td>{employee.skillRating}</td>
                 <td>
-                  <button type="button" class="btn btn-outline-primary">
+                  <button type="button" class="btn btn-outline-primary mx-2"
+                   onClick={()=>updateEmp(employee.id)}
+                  >
                     Update
                   </button>
                   {/* <button type="button" class="btn btn-outline-secondary">Secondary</button> */}
                   {/* <button type="button" href="./AddEmployee.js" class="btn btn-outline-success"> */}
                   {/* Add */}
                   {/* </button> */}
-                  <button type="button" class="btn btn-outline-danger">
+                  <button type="button" class="btn btn-outline-danger mx-2"
+                  // startIcon={<Delete/>}
+                 onClick={()=>removeEmp(employee.id)}
+                 >
                     Delete
                   </button>
                   {/* <button type="button" class="btn btn-outline-warning">Warning</button>

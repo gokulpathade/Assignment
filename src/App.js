@@ -1,5 +1,6 @@
 import React from 'react'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import Home from './components/Home';
 import Navbar from './components/Navbar';
@@ -13,6 +14,7 @@ import Login from './components/Login';
 
 export default function App() {
   return (
+    // <MuiThemeProvider >
     <div className='body'>
       <Router>
       <Navbar/>
@@ -35,6 +37,7 @@ export default function App() {
      
                 
     </div>
+    // </MuiThemeProvider>
   )
 }
 

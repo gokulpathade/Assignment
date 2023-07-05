@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 // import{Form, Button, Container, Alert } from 'react-bootstrap';
 
 export default function AddEmployee() {
@@ -10,18 +10,18 @@ export default function AddEmployee() {
 
   const baseURL = "http://localhost:8080/api/addEmp";
   const navigate = useNavigate();
-  const [empName, setEmpName] = useState("");
-  const [empEmail, setEmpEmail] = useState("");
-  const [empCompanyName, setEmpCompanyName] = useState("");
-  const [empDateJoing, setEmpDateJoing] = useState("");
-  const [empAddress, setEmpAddress] = useState("");
-  const [empGender, setEmpGender] = useState("");
-  const [empDateofBirth, setEmpDateofBirth] = useState("");
-  const [empMobileNumber, setEmpMobileNumber] = useState("");
-  const [empAlterMoNum, setEmpAlterMoNum] = useState("");
-  const [empCourse, setEmpCourse] = useState("");
-  const [empTechSkill, setEmpTechSkill] = useState("");
-  const [skillRating, setEmpSkillRating] = useState("");
+  const [empName,        setEmpName            ] = useState("");
+  const [empEmail,       setEmpEmail           ] = useState("");
+  const [empCompanyName, setEmpCompanyName     ] = useState("");
+  const [empDateJoing,   setEmpDateJoing        ] = useState("");
+  const [empAddress,     setEmpAddress         ] = useState("");
+  const [empGender,      setEmpGender          ] = useState("");
+  const [empDateofBirth,  setEmpDateofBirth      ] = useState("");
+  const [empMobileNumber,   setEmpMobileNumber   ] = useState("");
+  const [empAlterMoNum,    setEmpAlterMoNum     ] = useState("");
+  const [empCourse,        setEmpCourse         ] = useState("");
+  const [empTechSkill,     setEmpTechSkill      ]     = useState("");
+  const [skillRating,      setEmpSkillRating      ] = useState("");
 
   const nameChangeHandler = (event) => {
     setEmpName(event.target.value);
@@ -166,7 +166,7 @@ export default function AddEmployee() {
           className="form-horizontal"
           role="form"
           onSubmit={submitActionHandler}
-          action="/AddEmp.java"
+          // action="/AddEmp.java"
           post
         >
           <h2>Registration</h2>
@@ -276,11 +276,18 @@ export default function AddEmployee() {
                 <div className="col-sm-4">
                   <label className="radio-inline">
                     <input
-                      type="radio"
-                      id="femaleRadio"
-                      defaultValue="Female"
-                      value={empGender}
-                      onChange={genderChangeHandler}
+
+
+                   type="radio"
+          id="femaleRadio"
+          defaultValue="Female"
+          value="Female"
+          checked={empGender === "Female"} // Check if empGender is "Other"
+          onChange={genderChangeHandler}
+
+
+
+
 
                     />
                     Female
@@ -289,11 +296,14 @@ export default function AddEmployee() {
                 <div className="col-sm-4">
                   <label className="radio-inline">
                     <input
-                      type="radio"
-                      id="maleRadio"
-                      defaultValue="Male"
-                      value={empGender}
-                      onChange={genderChangeHandler}
+                     type="radio"
+                     id="maleRadio"
+                     defaultValue="Male"
+                     value="Male"
+                     checked={empGender === "Male"} // Check if empGender is "Other"
+                     onChange={genderChangeHandler}
+
+
                     />
                     Male
                   </label>
@@ -301,11 +311,17 @@ export default function AddEmployee() {
                 <div className="col-sm-4">
                   <label className="radio-inline">
                     <input
-                      type="radio"
-                      id="maleRadio"
-                      defaultValue="Other"
-                      value={empGender}
-                      onChange={genderChangeHandler}
+                    
+                    
+                    type="radio"
+                    id="otherRadio"
+                    defaultValue="Other"
+                    value="Other"
+                    checked={empGender === "Other"} // Check if empGender is "Other"
+                    onChange={genderChangeHandler}
+                    
+                    
+                    
                     />
                     Other
                   </label>
