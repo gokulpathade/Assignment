@@ -3,211 +3,139 @@ package com.hrmsbackend.app.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.stereotype.Service;
 
+//import com.hrmsbackend.app.controller.EmpController;
 import com.hrmsbackend.app.model.Employee;
 import com.hrmsbackend.app.repository.EmpRepository;
 
 @Service
 public class EmpService implements IntEmpService {
 
+	@Autowired
+	private EmpRepository empRepo;
+//	private EmpController mailSender;
 	
-	
-@Autowired 
- private EmpRepository empRepo;
+//	ADD NEW EMPLOYEE DETAILS HERE
 
-	
-
-
-
-	
-	
-	
-//	@Override
-//	public Employee empAdd(Employee emp) {
-//		// TODO Auto-generated method stub
-//		return empRepo.save(emp);
-//		
-//	}
-
-
-//Add new Employee details Here 
-	
 	public Employee saveEmp(Employee emp) {
-		// TODO Auto-generated method stub
 		return empRepo.save(emp);
 	}
 
 	
-//	Get all employee details list Data here
+//  GET ALL EMPLOYEE LIST DETAILS HERE
+	
 	@Override
 	public List<Employee> getEmp() {
-		// TODO Auto-generated method stub
-		return  empRepo.findAll();
+		return empRepo.findAll();
 	}
 
-	
-
-	
-	
-
-//	get Employee details here using by id 
+//	
 	@Override
 	public Employee getEmployee(int id) {
-		// TODO Auto-generated method stub
-		return empRepo.findById(id).get(); 
+		return empRepo.findById(id).orElse(null);
 	}
 
-
-
-//	get Employee details here using by id 
 	public Employee findById(int id) {
-		// TODO Auto-generated method stub
-		return empRepo.findById(id).get();
+		return empRepo.findById(id).orElse(null);
 	}
-
-
-	
-	
-	
-	
-	
-	
-	
-//	Edit Employee Details here by using id 
 
 	@Override
 	public Employee editEmp(int id) {
-		// TODO Auto-generated method stub
-		return empRepo.findById(id).get();
+		return empRepo.findById(id).orElse(null);
 	}
 
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	 // Get all employee list of details here 
 	public List<Employee> findAll() {
-		// TODO Auto-generated method stub
-		return  empRepo.findAll();
+		return empRepo.findAll();
 	}
 
-	
-	
-	
-//	Update employee Details Here 
-	
-	
-//	@Override
-//	public Employee updateEmp(Employee emp, int id) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-
-//	@Override
-//	public Employee updateEmp(Employee emp) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-
-
-//	@Override
-//	public Employee getEmpById(Employee emp, int id) {
-//		// TODO Auto-generated method stub
-//		return empRepo.getEmpById(id);
-//	}
-
-	
-
-	 // update employee details here using id 
-	public Employee updateEmp(int id) {
-		return empRepo.updateEmp(id);
-	}
-
-	
 	public Employee getEmpById(int id) {
-		return empRepo.findById(id).get();
+		return empRepo.findById(id).orElse(null);
 	}
 
-
-	 // update employee details here 
 	@Override
-	public Employee updateEmp(Employee Emp, int id) {
-		// TODO Auto-generated method stub
+	public Employee updateEmp(Employee emp, int id) {
 		
-//		Employee employee=empRepo.findById(id).get();
-//	if (Object.nonNull(employee.getempName())&&!"".equalsIgnoreCase(employee.setempName())) {
-//		employee.setempName(employee.getempName());
-//		
-//	}
-//		
-		return empRepo.save(Emp);
+		
+		Employee existingEmp = empRepo.findById(id).orElse(null);
+	
+		existingEmp.setEmpName(emp.getEmpName());
+		existingEmp.setEmpEmail(emp.getEmpEmail());
+		existingEmp.setEmpCompanyName(emp.getEmpCompanyName());
+		existingEmp.setEmpDateJoing(emp.getEmpDateJoing());
+		existingEmp.setEmpAddress(emp.getEmpAddress());
+		existingEmp.setEmpGender(emp.getEmpGender());
+		existingEmp.setEmpDateofBirth(emp.getEmpDateofBirth());
+		existingEmp.setEmpMobileNumber(emp.getEmpMobileNumber());
+		existingEmp.setEmpAlterMoNum(emp.getEmpAlterMoNum());
+		existingEmp.setEmpCourse(emp.getEmpCourse());
+		existingEmp.setEmpTechSkill(emp.getEmpTechSkill());
+		existingEmp.setSkillRating(emp.getSkillRating());
+
+		empRepo.save(existingEmp);
+	return existingEmp;
+		
+	
 	}
-
-
 	
 
-	 // delete employee details here 
+
 	@Override
 	public void deleteEmpId(int id) {
-		// TODO Auto-generated method stub
 		empRepo.deleteById(id);
 	}
 
-
-	public Employee saveEmp(int id) {
-		// TODO Auto-generated method stub
-		return empRepo.findById(id).get();
-	}
-
-
 	public Employee save(Employee updatedEmp) {
-		// TODO Auto-generated method stub
 		return empRepo.save(updatedEmp);
 	}
-
-
-
-//	@Override
-//	public Employee updateEmp(String empName) {
-//		// TODO Auto-generated method stub
-//		return empRepo.updateEmp(empName);
-//	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+////	  private final JavaMailSender mailSender;
+//
+//	    @Autowired
+//	    public EmpService(EmpRepository empRepo, EmpController mailSender) {
+//	        this. empRepo = empRepo;
+//	        this.mailSender = mailSender;
+//	    }
+//
+//	    public void sendBirthdayNotifications() {
+//	        List<Employee> employees = empRepo.findEmployeesWithTodayBirthday();
+//	        for (Employee employee : employees) {
+//	            String subject = "Happy Birthday, " + employee.getEmpName() + "!";
+//	            String body = "Dear " + employee.getEmpName() + ",\n\n" +
+//	                    "Wishing you a very happy birthday!\n\n" +
+//	                    "Best regards,\n" +
+//	                    "Your Company";
+//
+//	            sendEmail(employee.getEmpEmail(), subject, body);
+//	        }
+//	    }
+//
+//	    private void sendEmail(String to, String subject, String body) {
+//	        SimpleMailMessage message = new SimpleMailMessage();
+//	        message.setTo(to);
+//	        message.setSubject(subject);
+//	        message.setText(body);
+//	        mailSender.send(message);
+//	    }
 //
 //
-//	@Override
-//	public Employee searchEmp(String empSkills) {
-//		// TODO Auto-generated method stub
-//		return empRepo.updateEmp(empSkills);
-//	}
-
-//
-//	@Override
-//	public Employee updateEmp(Employee emp) {
-//		// TODO Auto-generated method stub
-//		return empRepo.save(emp);
-//	}
-
+//		@Override
+//		public List<Employee> findEmployeesWithTodayBirthday(Employee empName) {
+//			// TODO Auto-generated method stub
+//			return null;
+//		}
 	
-
-	
-	
-	
-	
-	
-	
-
-
 	
 	
 	
@@ -221,14 +149,3 @@ public class EmpService implements IntEmpService {
 	
 	
 }
-
-
-
-
-
-
-
-
-
-
-

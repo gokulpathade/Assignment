@@ -5,67 +5,33 @@ import java.util.List;
 import com.hrmsbackend.app.model.Employee;
 
 public interface IntEmpService {
-	
 
-
-	
-	
-//	get All Employee list details Here 
+	// Get all Employee details
 	public List<Employee> getEmp();
 
-	
-//	get Employee details Here using id 
-	public Employee getEmpById(int id); 
-	
-	
-	
-	
-//	Add Employee Details Here // New Employee details  
-	public Employee saveEmp(Employee emp);
-	
-	
-	
-	
-// Edit Employee Details Here If It Exist 
-	
-	public Employee editEmp(int id);
-	
-	
-	
-//	public Employee getEmpById(Employee emp, int id);
-	
-	//update Employee details here
-	public Employee updateEmp(Employee Emp, int id);
-	public Employee save(Employee updatedEmp);
-//	public Employee updateEmp(String empName);
-//	public Employee searchEmp(String empSkills);
+	// Get Employee details by ID
+	public Employee getEmpById(int id);
 
-//	public Employee updateEmp(Employee emp);
-	
-	
-//	delete Employee Data Here 
+	// Add Employee details
+	public Employee saveEmp(Employee emp);
+
+	// Edit Employee details
+	public Employee editEmp(int id);
+
+	// Update Employee details
+	public Employee updateEmp(Employee emp, int id);
+
+	// Save updated Employee details
+	public Employee save(Employee updatedEmp);
+
+	// Delete Employee by ID
 	void deleteEmpId(int id);
 
-	
-	
-
+	// Get Employee by ID
 	public Employee getEmployee(int id);
 	
-	
-	
-	
-	
-	
-	
+//	public List<Employee> findEmployeesWithTodayBirthday(Employee empName);
+//	public Employee sendEmailtoEMP();
+//	
+
 }
-
-
-
-
-
-
-
-
-
-
-
