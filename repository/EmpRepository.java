@@ -16,7 +16,15 @@ public interface EmpRepository extends JpaRepository<Employee, Integer> {
 
 
 	Employee updateEmp(int id);
+	
 
+//	@Query(value = "select * from employee where getSendEmailEmp=?;", nativeQuery = true)
+//	Employee SendEmailEmp(String empEmail);
+
+	@Query(value =" select * from employee where empEmail =?;", nativeQuery = true)
+	Employee empEmail(String empEmail);
+	
+	
 	
 
 }

@@ -1,5 +1,7 @@
 package com.hrmsbackend.app.service;
 
+import java.time.LocalDate;
+//import java.time.LocalDate;
 import java.util.List;
 
 import com.hrmsbackend.app.model.Employee;
@@ -30,8 +32,30 @@ public interface IntEmpService {
 	// Get Employee by ID
 	public Employee getEmployee(int id);
 	
+	
+	
+	public List<Employee> getEmpDate(LocalDate empDateofBirth);
+	
 //	public List<Employee> findEmployeesWithTodayBirthday(Employee empName);
 //	public Employee sendEmailtoEMP();
+	
+	
+	
+//	
+////	send Email On BARTHDAY EMAIL 
+////	BARTHDAY EMAIL  WISH
+//	 void sendBirthdayEmail(String recipientEmail);
+//	 
+//	 
+////	 	send Email ON  ANNIVERSARY DAY 
+//	 // EMAIL TO THE EMPLOYEE ANNIVERSARY WISH 
+//	    void sendAnniversaryEmail(String recipientEmail);
+	
+//	public <empEmail> LocalDate getBirthdate(empEmail String);
+//	
+	
+	
+	
 //	
 
 }

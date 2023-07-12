@@ -1,5 +1,7 @@
 package com.hrmsbackend.app.controller;
 
+import java.time.LocalDate;
+//import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+//import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -19,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hrmsbackend.app.model.Employee;
 import com.hrmsbackend.app.service.EmpService;
 
-import jakarta.servlet.http.HttpServletRequest;
+//import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/api")
@@ -106,6 +108,19 @@ public class EmpController {
 	
 	
 	
+	@GetMapping("/getEmpDate")
+	public List<Employee> getEmpDate(LocalDate empDateofBirth) { 
+		return empService.findAll();
+	}
+
+	
+	
+//	
+//	@GetMapping("/sendMail")
+//	public <empEmail> LocalDate getBirthdate(empEmail String) {
+//		return empService.findAll();
+//	}
+//	
 //	
 //	public List<Employee> findEmployeesWithTodayBirthday(Employee empName)
 //	{
