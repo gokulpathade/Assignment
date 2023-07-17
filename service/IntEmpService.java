@@ -32,9 +32,12 @@ public interface IntEmpService {
 	// Get Employee by ID
 	public Employee getEmployee(int id);
 	
-	
+	List<Employee> findByBirthdayMonthAndBirthdayDay(int monthValue, int dayOfMonth);
+
 	
 	public List<Employee> getEmpDate(LocalDate empDateofBirth);
+
+	public List<Employee> Birthday(LocalDate today);
 	
 //	public List<Employee> findEmployeesWithTodayBirthday(Employee empName);
 //	public Employee sendEmailtoEMP();

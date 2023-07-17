@@ -4,7 +4,10 @@ import java.time.LocalDate;
 //import java.time.LocalDateTime;
 //import java.util.Date;
 
-import org.springframework.format.annotation.DateTimeFormat;
+//import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+//import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,6 +23,7 @@ public class Employee {
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
+//	@JsonDeserialize(using = LocalDateDeserializer.class)
 	@Column
 	private int id;
 	
@@ -33,7 +37,7 @@ public class Employee {
 	private String empCompanyName;
 	
 	@Column
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	private LocalDate empDateJoing;
 	
 	@Column
@@ -44,7 +48,8 @@ public class Employee {
 	
 	
 	@Column
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+//	@JsonDeserialize(using = LocalDateDeserializer.class)
 	private LocalDate empDateofBirth;
 	
 	@Column
@@ -65,6 +70,10 @@ public class Employee {
 	
 	private String empRole;
 
+	
+	
+	
+	
 
 	public int getId() {
 		return id;
@@ -229,8 +238,8 @@ public class Employee {
 
 	public Employee() {
 		super();
-		// TODO Auto-generated constructor stub
-	}
+		
+	              }
 
 
 	@Override

@@ -3,7 +3,7 @@ package com.hrmsbackend.app.service;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.apache.naming.factory.SendMailFactory;
+//import org.apache.naming.factory.SendMailFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -90,12 +90,46 @@ public class EmpService implements IntEmpService {
 	public Employee save(Employee updatedEmp) {
 		return empRepo.save(updatedEmp);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 	@Override
 	public List<Employee> getEmpDate(LocalDate empDateofBirth) {
 		// TODO Auto-generated method stub
 		return empRepo.findAll();
+	}
+
+
+	@Override
+	public List<Employee> Birthday(LocalDate today) {
+		// TODO Auto-generated method stub
+	    return  empRepo.Birthday(today);
+	}
+
+
+	@Override
+	public List<Employee> findByBirthdayMonthAndBirthdayDay(int monthValue, int dayOfMonth) {
+		// TODO Auto-generated method stub
+		return empRepo.findAll();
+
 	}
 
 
