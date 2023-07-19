@@ -1,44 +1,28 @@
-import React from 'react'
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
-import Home from './components/Home';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import AddEmployee from './components/AddEmployee';
-import UpdateEmp from './components/UpdateEmp'
-import Login from './components/Login';
-
-//import App from 'App.css'
+import React from "react";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import Home from "./components/Home";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AddEmployee from "./components/AddEmployee";
+import UpdateEmp from "./components/UpdateEmp";
+import Login from "./components/Login";
 
 export default function App() {
   return (
-    // <MuiThemeProvider >
-    <div className='body'>
+    <div className="body">
       <Router>
-      <Navbar/>
-    
-      <Routes>
-      {/* <Navbar/> */}
-      <Route exact path="/" element={<Home/>} /> 
-      {/* <Route exact path="/Navbar" element={<Navbar/>} /> */}
-      <Route exact path="/AddEmployee" element={<AddEmployee/>} /> 
-      <Route exact path="/UpdateEmp" element={<UpdateEmp/>} /> 
-      <Route exact path="/Login" element={<Login/>} /> 
+        <Navbar />
 
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/AddEmployee" element={<AddEmployee />} />
+          <Route path="/UpdateEmp" element={<UpdateEmp />} />
+          <Route path="/Login" element={<Login />} />
+        </Routes>
 
-      </Routes>
-      <Footer/>
-    
-    
+        <Footer />
       </Router>
-     
-     
-                
     </div>
-    // </MuiThemeProvider>
-  )
+  );
 }
-
-
