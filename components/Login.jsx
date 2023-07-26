@@ -1,59 +1,111 @@
 import React from 'react'
-import { Link } from "react-router-dom";
-
-
-import IconButton from "@mui/material/IconButton";
-import AddCircleSharpIcon from '@mui/icons-material/AddCircleSharp';
-
-function login() {
+import { Link } from 'react-router-dom'
+function Login() {
   return (
     <div>
-      <div>
-        {/* <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" /> */}
-        {/*---- Include the above in your HEAD tag --------*/}
-        <div className="col-md-4 col-md-offset-4" id="login">
-          <section id="inner-wrapper" className="login">
-            <article>
-              <form>
-                <div className="form-group">
-                  <div className="input-group">
-                    <span className="input-group-addon"><i className="fa fa-user"> </i></span>
-                    <input type="text" className="form-control" placeholder="Name" />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <div className="input-group">
-                    <span className="input-group-addon"><i className="fa fa-envelope"> </i></span>
-                    <input type="email" className="form-control" placeholder="Email Address" />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <div className="input-group">
-                    <span className="input-group-addon"><i className="fa fa-key"> </i></span>
-                    <input type="password" className="form-control" placeholder="Password" />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <div className="input-group">
-                    <span className="input-group-addon"><i className="fa fa-key"> </i></span>
-                    <input type="password" className="form-control" placeholder="Confirm Password" />
-                  </div>
-                </div>
-                <button type="submit" className="btn btn-success btn-block">LOGIN</button>
-                <p>New Here?<Link className="btn btn-blue text-secondary mx-2 shadow-lg" to="/AddEmployee">
-         
-         <IconButton aria-label="Home">
-           <AddCircleSharpIcon />
-         </IconButton> Register Here
- 
-    
-         </Link></p>
-              </form>
-            </article>
-          </section></div>
+        <div>
+    {/* <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    /> */}
+    {/*---- Include the above in your HEAD tag --------*/}
+    <link
+      href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    {/*---- Include the above in your HEAD tag --------*/}
+    <div className="container">
+      <form
+        className="form-horizontal"
+        role="form"
+        // onSubmit={submitActionHandler}
+        // action="/AddEmp.java"
+        
+      >
+        <h2 className='h2'>Login</h2>
+        <br/><br/>
+    <div className="form-group">
+            <label htmlFor="email" className="col-sm-3 control-label" >
+              Email{" "}
+            </label>
+            <div className="col-sm-9">
+              <input
+                type="email"
+                id="email"
+                placeholder="Email"
+                className="form-control"
+                name="email"
+                // value={empEmail}
+                // onChange={emailChangeHandler}
+               required  />
+            </div>
+          </div>
+        {/* Password input */}
+
+        <div className="form-group">
+            <label htmlFor="email" className="col-sm-3 control-label" >
+            Password{" "}
+            </label>
+            <div className="col-sm-9">
+              <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                className="form-control"
+                name="password"
+                // value={password}
+                // onChange={passwordChangeHandler}
+               required  />
+            </div>
+          </div>
+
+
+        {/* 2 column grid layout for inline styling */}
+        <div className="row mb-4">
+          <div className="col d-flex justify-content-center">
+            {/* Checkbox */}
+            <div className="form-check">
+              <input className="form-check-input" type="checkbox" defaultValue id="form2Example31" defaultChecked />
+              <label className="form-check-label" htmlFor="form2Example31"> Remember me </label>
+            </div>
+          </div>
+          <div className="col">
+            {/* Simple link */}
+            {/* <a href="#!">Forgot password?</a> */}
+          </div>
+        </div>
+        {/* Submit button */}
+        <button type="button" className="btn btn-primary btn-block mb-4">Sign in</button>
+        {/* Register buttons */}
+        <div className="text-center">
+          <p>Not a member? <a href="./AddEmployee.jsx">  <Link className="btn btn-blue mx-2 shadow-lg" to="/AddEmployee">
+         Registration
+        </Link></a></p>
+          <p>or sign up with:</p>
+          <button type="button" className="btn btn-link btn-floating mx-1">
+            <i className="fab fa-facebook-f" />
+          </button>
+          <button type="button" className="btn btn-link btn-floating mx-1">
+            <i className="fab fa-google" />
+          </button>
+          <button type="button" className="btn btn-link btn-floating mx-1">
+            <i className="fab fa-twitter" />
+          </button>
+          <button type="button" className="btn btn-link btn-floating mx-1">
+            <i className="fab fa-github" />
+          </button>
+        </div>
+      </form>
+               </div>
+            
+       </div>
+        
+     
+     
       </div>
-    </div>
   )
 }
 
-export default login
+export default Login

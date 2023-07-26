@@ -14,7 +14,7 @@ export default function Navbar() {
           <a className="active" />
         </li>
         <li className="lif">
-          <a>ceinsys tech limited</a>
+        <h5> <a>ceinsys tech limited</a></h5>  
         </li>
         {/* <li class="lif"><a> Wecare@goldsgym.in</a></li> */}
         {/* <li><a href="#about">About</a></li> */}
@@ -22,7 +22,7 @@ export default function Navbar() {
 
       <nav className="navbar navbar-expand-lg navbar-blue navbar-b bg-primary">
         <a className="navbar-brand" href="/"> <IconButton aria-label="Home">
-          <HomeSharpIcon />
+          <HomeSharpIcon />Home 
         </IconButton>
          {/* Home */}
         </a>
@@ -46,12 +46,18 @@ export default function Navbar() {
          Registration
         </Link>
         
-        {/* <Link className="btn btn-blue mx-2 shadow" to="./UpdateEmp.js">
-        Edit
-        </Link>  */}
-        {/* <Link className="btn btn-primary mx-2" to="./Login.js">
-        Login
+        <Link className="btn btn-blue mx-2 shadow" to="./Login.jsx">
+      login
         </Link>
+
+
+
+           <Link className="btn btn-blue mx-2 shadow" to="./Dashboard.jsx">
+   Dashboard
+        </Link> 
+ {/* <Link className="btn btn-primary mx-2 shadow-lg" to="./Login.jsx"> 
+        Login
+        </Link> */}
         {/* <button className="btn btn-primary mx-3">Update</button> */}
         {/* <button className="btn btn-primary mx-3">Delete</button> */}
         {/* <button className="btn btn-outline-light">AddUser</button> */}

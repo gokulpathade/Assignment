@@ -1,83 +1,180 @@
-// import React from 'react'
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import IconButton from "@mui/material/IconButton";
+import AppRegistrationSharpIcon from '@mui/icons-material/AppRegistrationSharp';
+import CancelPresentationSharpIcon from '@mui/icons-material/CancelPresentationSharp';
 
-function Edit() {
-  const baseURL = "http://localhost:8080/api";
-  const navigate = useNavigate();
+
+export default function Edit() {
+  //
   const { id } = useParams();
+  const navigate = useNavigate();
 
-  const [employee, setEmployee] = useState({
-    empName: "",
-    empEmail: "",
-    empCompanyName: "",
-    empDateJoing: "",
-    empAddress: "",
-    empGender: "",
-    empDateofBirth: "",
-    empMobileNumber: "",
-    empAlterMoNum: "",
-    empCourse: "",
-    empTechSkill: "",
-    skillRating: "",
-  });
+  // const [employee, setEmployee] = useState([]);
 
-  const fetchEmployeeData = () => {
-    axios
-      .get(baseURL + "/EmpById/" + id)
-      .then((response) => {
-        //  console.log(response)
-        setEmployee(response.data);
-      })
-      .catch((error) => {
-        alert("Something went wrong: " + error);
-      });
-  };
-  const handleChange = (event) => {
-    const {empName, value } = event.target;
-    setEmployee((prevEmployee) => ({
-      prevEmployee,
-      [empName]: value,
-    }));
-  };
-  
+  const baseURL = "http://localhost:8080/api" ; 
+
+
+  // const [id,             setid            ] = useState("");
+  const [empName,        setEmpName            ] = useState("");
+  const [empEmail,       setEmpEmail           ] = useState("");
+  const [empCompanyName, setEmpCompanyName     ] = useState("");
+  const [empDateJoing,   setEmpDateJoing        ] = useState("");
+  const [empAddress,     setEmpAddress         ] = useState("");
+  const [empGender,      setEmpGender          ] = useState("");
+  const [empDateofBirth,  setEmpDateofBirth      ] = useState("");
+  const [empMobileNumber,   setEmpMobileNumber   ] = useState("");
+  const [empAlterMoNum,    setEmpAlterMoNum     ] = useState("");
+  const [empCourse,        setEmpCourse         ] = useState("");
+  const [empTechSkill,     setEmpTechSkill      ]     = useState("");
+  const [skillRating,      setEmpSkillRating      ] = useState("");
+
+
 
   useEffect(() => {
-    fetchEmployeeData();
-  }, []);
+    axios
+    .get(baseURL + "/EmpById/" + id)
+      .then((response) => {
+      const  Emp = response.data;
+      setEmpName(Emp.empName);
+      setEmpEmail(Emp.empEmail);
+      setEmpCompanyName(Emp.empCompanyName);
+  
+    setEmpDateJoing(Emp.empDateJoing);
+    
+    setEmpAddress(Emp.empAddress);
+      setEmpGender(Emp.empGender);
+      setEmpDateofBirth(Emp.empDateofBirth);
+  
+    setEmpMobileNumber(Emp.empMobileNumber);
+    setEmpAlterMoNum(Emp.empAlterMoNum);
+   
+    setEmpCourse(Emp.empCourse);
+      setEmpTechSkill(Emp.empTechSkill);
+    
+    setEmpSkillRating(Emp.skillRating);
+    })
+      .catch((error) => {
+        alert("Something went wrong" + error);
+      });
+  }, [id]);
 
+
+
+
+  const nameChangeHandler = (event) => {
+    setEmpName(event.target.value);
+  };
+
+  const emailChangeHandler = (event) => {
+    setEmpEmail(event.target.value);
+ 
+  };
+  const companynameChangeHandler = (event) => {
+    setEmpCompanyName(event.target.value);
+  };
+  const dojChangeHandler = (event) => {
+    setEmpDateJoing(event.target.value);
+  };
+  const addChangeHandler = (event) => {
+    setEmpAddress(event.target.value);
+  };
+  const genderChangeHandler = (event) => {
+    setEmpGender(event.target.value);
+  };
+  const dobChangeHandler = (event) => {
+    setEmpDateofBirth(event.target.value);
+  };
+  const mobileChangeHandler = (event) => {
+    setEmpMobileNumber(event.target.value);
+  };
+
+  const alternativeChangeHandler = (event) => {
+    setEmpAlterMoNum(event.target.value);
+  };
+  const courseChangeHandler = (event) => {
+    setEmpCourse(event.target.value);
+  };
+  const techskillChangeHandler = (event) => {
+    setEmpTechSkill(event.target.value);
+  };
+  const skillratingChangeHandler = (event) => {
+    setEmpSkillRating(event.target.value);
+  };
+ 
   const submitActionHandler = (event) => {
     event.preventDefault();
-  
     axios
-      .put(baseURL + "/UpdateEmployee/" +id,
-    //  { empName:"" ,
-    //   empEmail:"",
-    //   empCompanyName:"",
-    //   empDateJoing:"",
-    //   empAddress: "",
-    //   empGender: "",
-    //   empDateofBirth: "",
-    //   empMobileNumber: "",
-    //   empAlterMoNum: "",
-    //   empCourse: "",
-    //   empTechSkill: "",
-    //   skillRating: "" }
-    )
+    .put(baseURL + "/UpdateEmployee/" + id ,
+    {
+        empName: empName,
+        empEmail: empEmail,
+        empCompanyName: empCompanyName,
+        empDateJoing: empDateJoing,
+        empAddress: empAddress,
+        empGender: empGender,
+        empDateofBirth: empDateofBirth,
+        empMobileNumber: empMobileNumber,
+        empAlterMoNum: empAlterMoNum,
+        empCourse: empCourse,
+        empTechSkill: empTechSkill,
+        skillRating: skillRating,
+      })
       .then((response) => {
-        alert("Employee data updated successfully!");
+        alert("Employee details updated successfully!");
+        cancelHandler();
         navigate("/");
       })
       .catch((error) => {
-        alert("Error: " + error);
+        alert("error===" + error);
       });
   };
-  
 
+  // rest the values of register form
   const cancelHandler = () => {
-    navigate("/");
+   navigate("/")
   };
+
+  //
+
+  //
+  //  const[employee, setEmployee]=useState({
+  // empName:"",
+  // empEmail:"",
+  // empCompanyName:"",
+  // empDateJoing:"",
+  // empAddress:"",
+  // empGender:"",
+  // empDateofBirth:"",
+  // empMobileNumber:"",
+  // empAlterMoNum:"",
+  // empCourse:"",
+  // empTechSkill:"",
+  // skillRating:""
+  // })
+  //
+  // const {empName, empEmail, empCompanyName, empDateJoing, empAddress, empGender, empDateofBirth, empMobileNumber, empAlterMoNum  ,
+  // empCourse, empTechSkill, skillRating
+  // } =employee;
+  //
+  //
+
+  //  Add new employee details here
+  //  const;=(e)=>{
+  //  setEmployee({...employee, [e.target.empName]: e.target.value });
+  //  };
+  //
+
+  // send data to api through form registration
+  // const onSubmit = async (e)=>{
+  //  for url use this privent method when we click on submit then url going long path url
+  // so prevent is use able to minimize the wierd url
+  // e.preventDefault();
+  // await axios.post("http://localhost:8080/api/addEmp",employee)
+  //  navigate("/")
+  //
+  // }
 
   return (
     <div>
@@ -87,13 +184,21 @@ function Edit() {
         id="bootstrap-css"
       />
       {/*---- Include the above in your HEAD tag --------*/}
+      <link
+        href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+        rel="stylesheet"
+        id="bootstrap-css"
+      />
+      {/*---- Include the above in your HEAD tag --------*/}
       <div className="container">
-        <form
+        <form id={id}
           className="form-horizontal"
           role="form"
           onSubmit={submitActionHandler}
+          // action="/AddEmp.java"
+          method=""
         >
-          <h2>Registration</h2>
+          <h2>Edit Detail</h2>
           <div className="form-group">
             <label htmlFor="firstName" className="col-sm-3 control-label">
               Name
@@ -104,17 +209,21 @@ function Edit() {
                 id="Name"
                 placeholder="Enter Your Full Name"
                 className="form-control"
-                name="empName"
-                value={employee.empName}
-                onChange={handleChange}
-             
-                required
+                value={empName}
+                onChange={nameChangeHandler}
+                autofocus
+             required
               />
             </div>
           </div>
-          {/* Other form fields */}
+          {/* <div className="form-group"> */}
+          {/* <label htmlFor="lastName" className="col-sm-3 control-label">Last Name</label> */}
+          {/* <div className="col-sm-9"> */}
+          {/* <input type="text" id="lastName" placeholder="Last Name" className="form-control" autofocus /> */}
+          {/* </div> */}
+          {/* </div> */}
           <div className="form-group">
-            <label htmlFor="email" className="col-sm-3 control-label">
+            <label htmlFor="email" className="col-sm-3 control-label" >
               Email*{" "}
             </label>
             <div className="col-sm-9">
@@ -124,10 +233,9 @@ function Edit() {
                 placeholder="Email"
                 className="form-control"
                 name="email"
-                value={employee.empEmail}
-                onChange={handleChange} //emailhandleChange}
-                required
-              />
+                value={empEmail}
+                onChange={emailChangeHandler}
+            required  />
             </div>
           </div>
           <div className="form-group">
@@ -140,8 +248,8 @@ function Edit() {
                 id="ComapanyName"
                 placeholder="Comapany Name"
                 className="form-control"
-                value={employee.empCompanyName}
-                onChange={handleChange} //companynamehandleChange}
+                value={empCompanyName}
+                onChange={companynameChangeHandler}
                 required
                 autofocus
               />
@@ -156,8 +264,8 @@ function Edit() {
                 type="date"
                 id="birthDate"
                 className="form-control"
-                value={employee.empDateJoing}
-                onChange={handleChange} //dojhandleChange}
+                value={empDateJoing}
+                onChange={dojChangeHandler}
               />
             </div>
           </div>
@@ -183,9 +291,9 @@ function Edit() {
                 id="Address"
                 placeholder="Address"
                 className="form-control"
-                value={employee.empAddress}
-                onChange={handleChange} //addhandleChange}
-                required
+                value={empAddress}
+                onChange={addChangeHandler}
+                required 
                 autofocus
               />
             </div>
@@ -197,12 +305,19 @@ function Edit() {
                 <div className="col-sm-4">
                   <label className="radio-inline">
                     <input
-                      type="radio"
-                      id="femaleRadio"
-                      defaultValue="Female"
-                      value="Female"
-                      checked={employee.empGender === "Female"} // Check if empGender is "Other"
-                      onChange={handleChange} //genderhandleChange}
+
+
+                   type="radio"
+          id="femaleRadio"
+          defaultValue="Female"
+          value="Female"
+          checked={empGender === "Female"} // Check if empGender is "Other"
+          onChange={genderChangeHandler}
+
+
+
+
+
                     />
                     Female
                   </label>
@@ -210,12 +325,14 @@ function Edit() {
                 <div className="col-sm-4">
                   <label className="radio-inline">
                     <input
-                      type="radio"
-                      id="maleRadio"
-                      defaultValue="Male"
-                      value="Male"
-                      checked={employee.empGender === "Male"} // Check if empGender is "Other"
-                      onChange={handleChange} //genderhandleChange}
+                     type="radio"
+                     id="maleRadio"
+                     defaultValue="Male"
+                     value="Male"
+                     checked={empGender === "Male"} // Check if empGender is "Other"
+                     onChange={genderChangeHandler}
+
+
                     />
                     Male
                   </label>
@@ -223,12 +340,17 @@ function Edit() {
                 <div className="col-sm-4">
                   <label className="radio-inline">
                     <input
-                      type="radio"
-                      id="otherRadio"
-                      defaultValue="Other"
-                      value="Other"
-                      checked={employee.empGender === "Other"} // Check if empGender is "Other"
-                      onChange={handleChange} //genderhandleChange}
+                    
+                    
+                    type="radio"
+                    id="otherRadio"
+                    defaultValue="Other"
+                    value="Other"
+                    checked={empGender === "Other"} // Check if empGender is "Other"
+                    onChange={genderChangeHandler}
+                    
+                    
+                    
                     />
                     Other
                   </label>
@@ -246,8 +368,9 @@ function Edit() {
                 type="date"
                 id="birthDate"
                 className="form-control"
-                value={employee.empDateofBirth}
-                onChange={handleChange} 
+                value={empDateofBirth}
+                onChange={dobChangeHandler}
+
               />
             </div>
           </div>
@@ -256,16 +379,16 @@ function Edit() {
               Phone number{" "}
             </label>
             <div className="col-sm-9">
-              <input
-                min={10}
-                max={12}
+              <input 
+              min={10}
+              max={12}
                 type="phoneNumber"
                 id="phoneNumber"
                 placeholder="Phone number"
-                value={employee.empMobileNumber}
-                onChange={handleChange} //mobilehandleChange}
+                value={empMobileNumber}
+                onChange={mobileChangeHandler}
                 className="form-control"
-                required
+                required 
               />
               {/* <span className="help-block">Your phone number won't be disclosed anywhere </span> */}
             </div>
@@ -279,14 +402,14 @@ function Edit() {
             </label>
             <div className="col-sm-9">
               <input
-                min={10}
-                max={12}
+               min={10}
+               max={12}
                 type="AlterphoneNumber"
                 id="AlterphoneNumber"
                 placeholder="Alternative Phone number"
                 className="form-control"
-                value={employee.empAlterMoNum}
-                onChange={handleChange} //alternativehandleChange}
+                value={empAlterMoNum}
+                onChange={alternativeChangeHandler}
               />
               {/* <span className="help-block">Your phone number won't be disclosed anywhere </span> */}
             </div>
@@ -296,11 +419,11 @@ function Edit() {
               Course
             </label>
             <div className="col-sm-9">
-              <label> </label>
+              {/* <label> </label> */}
               <select
                 className="col-sm-9"
-                value={employee.empCourse}
-                onChange={handleChange} //coursehandleChange}
+                value={empCourse}
+                onChange={courseChangeHandler}
               >
                 <option value="Course">Course</option>
                 <option value="BCA   ">BCA </option>
@@ -329,9 +452,9 @@ function Edit() {
               {/* <label className="reglabel">Tech Skill :</label> */}
               <select
                 className="col-sm-9"
-                value={employee.empTechSkill}
-                onChange={handleChange} //techskillhandleChange}
-                required
+                value={empTechSkill}
+                onChange={techskillChangeHandler}
+                required 
               >
                 <option value="TechnicalSkills">Technical Skills</option>
                 <option value="Java    ">Java </option>
@@ -341,43 +464,51 @@ function Edit() {
                 <option value="React.js">React.js </option>
                 <option value="Node.js ">Node.js </option>
               </select>
-              </div>{" "}
-              {/* <div className="col-sm-9"> */}
-              {/* <input */}
-              {/* //  type="text" */}
-              {/* //  id="technicalskill" */}
-              {/* //  placeholder="technicalskill" */}
-              {/* //  className="form-control" */}
-              {/* //  autofocus */}
-              {/* //  /> */}
-              {/* </div> */}
-            </div>
-            <div className="form-group">
-              <label
-                htmlFor="TechnicalSkillRating"
-                className="col-sm-3 control-label"
+            </div>{" "}
+            {/* <div className="col-sm-9"> */}
+            {/* <input */}
+            {/* //  type="text" */}
+            {/* //  id="technicalskill" */}
+            {/* //  placeholder="technicalskill" */}
+            {/* //  className="form-control" */}
+            {/* //  autofocus */}
+            {/* //  /> */}
+            {/* </div> */}
+          </div>
+          <div className="form-group">
+            <label
+              htmlFor="TechnicalSkillRating"
+              className="col-sm-3 control-label"
+            >
+              Technical Skills rating
+            </label>
+            <div className="col-sm-9">
+              <select
+                className="col-sm-9"
+                value={skillRating}
+                onChange={skillratingChangeHandler}
+                required 
               >
-                Technical Skills rating
-              </label>
-              <div className="col-sm-9">
-                <select
-                  className="col-sm-9"
-                  value={employee.skillRating}
-                  onChange={handleChange} //skillratinghandleChange}
-                  required
-                >
-                  <option value="Skillrating">Skill Rating </option>
-                  <option value="1"> 1</option>
-                  <option value="2">2 </option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5 </option>
-                  {/* <option value="empCourse">12345 </option> */}
-                  {/* <option value="empCourse">5 </option> */}
-                </select>
-              </div>{" "}
-            </div>
-          {/* </div> */}
+                <option value="Skillrating">Skill Rating </option>
+                <option value="1"> 1</option>
+                <option value="2">2 </option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 </option>
+                {/* <option value="empCourse">12345 </option> */}
+                {/* <option value="empCourse">5 </option> */}
+              </select>
+            </div>{" "}
+            {/* <div className="col-sm-9"> */}
+            {/* <input */}
+            {/* //  type="text" */}
+            {/* //  id="TechnicalSkills" */}
+            {/* //  placeholder="TechnicalSkills" */}
+            {/* //  className="form-control" */}
+            {/* //  autofocus */}
+            {/* //  /> */}
+            {/* </div> */}
+          </div>
           {/* <div className="form-group"> */}
           {/* <label htmlFor="Height" className="col-sm-3 control-label">Height* </label> */}
           {/* <div className="col-sm-9"> */}
@@ -390,26 +521,40 @@ function Edit() {
           {/* <input type="number" id="weight" placeholder="Please write your weight in kilograms" className="form-control" /> */}
           {/* </div> */}
           {/* </div> */}
-          {/* ... */}
           <div className="form-group">
-            <div className="col-sm-9 col-sm-offset-3 ">
+            <div className="col-sm-9 col-sm-offset-3">
               {/* <span className="help-block">*Required fields</span> */}
             </div>
           </div>
-          <button type="submit" className="btn btn-primary mx-3 shadow-2">
-            Update
+         
+          <button type="submit" className="btn btn-primary mx-2">
+          <IconButton>
+        <AppRegistrationSharpIcon />
+      </IconButton>
+          Update 
           </button>
+         
+
+
+
           <button
-            type="reset"
-            onClick={cancelHandler}
-            className="btn btn-danger mx-3 shadow"
+            type="rest"
+            onClick={() => cancelHandler()}
+            className="btn btn-danger mx-2"
           >
+            <IconButton>
+        <CancelPresentationSharpIcon />
+      </IconButton>
+            
             Cancel
           </button>
-        </form>
-      </div>
+          {/* <button type="" className="btn btn-secondary mx-3">
+            Login
+          </button> */}
+        </form>{" "}
+        {/* /form */}
+      </div>{" "}
+      {/* ./container */}
     </div>
   );
 }
-
-export default Edit;

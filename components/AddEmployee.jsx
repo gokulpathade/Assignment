@@ -178,7 +178,7 @@ export default function AddEmployee() {
           <h2>Registration</h2>
           <div className="form-group">
             <label htmlFor="firstName" className="col-sm-3 control-label">
-              Name
+              Name*
             </label>
             <div className="col-sm-9">
               <input
@@ -234,7 +234,7 @@ export default function AddEmployee() {
           </div>
           <div className="form-group">
             <label htmlFor="birthDate" className="col-sm-3 control-label">
-              Date of Joing*
+              Date of Joing
             </label>
             <div className="col-sm-9">
               <input
@@ -260,7 +260,7 @@ export default function AddEmployee() {
           {/* </div> */}
           <div className="form-group">
             <label htmlFor="Address" className="col-sm-3 control-label">
-              Address
+              Address*
             </label>
             <div className="col-sm-9">
               <input
@@ -347,13 +347,13 @@ export default function AddEmployee() {
                 className="form-control"
                 value={empDateofBirth}
                 onChange={dobChangeHandler}
-
+                    required
               />
             </div>
           </div>
           <div className="form-group">
             <label htmlFor="phoneNumber" className="col-sm-3 control-label">
-              Phone number{" "}
+              Phone Number*{" "}
             </label>
             <div className="col-sm-9">
               <input 
@@ -375,7 +375,7 @@ export default function AddEmployee() {
               htmlFor="AlterphoneNumber"
               className="col-sm-3 control-label"
             >
-              Alternative Phone number{" "}
+              Alternative Number{" "}
             </label>
             <div className="col-sm-9">
               <input
@@ -393,7 +393,7 @@ export default function AddEmployee() {
           </div>
           <div className="form-group">
             <label htmlFor="Course" className="col-sm-3 control-label">
-              Course
+             Edu / Course
             </label>
             <div className="col-sm-9">
               {/* <label> </label> */}
@@ -423,7 +423,7 @@ export default function AddEmployee() {
           </div>
           <div className="form-group">
             <label htmlFor="technicalskill" className="col-sm-3 control-label">
-              Technical Skills
+               Skills*
             </label>
             <div className="col-sm-9">
               {/* <label className="reglabel">Tech Skill :</label> */}
@@ -457,7 +457,7 @@ export default function AddEmployee() {
               htmlFor="TechnicalSkillRating"
               className="col-sm-3 control-label"
             >
-              Technical Skills rating
+             Skill Rating *
             </label>
             <div className="col-sm-9">
               <select
@@ -466,7 +466,7 @@ export default function AddEmployee() {
                 onChange={skillratingChangeHandler}
                 required 
               >
-                <option value="Skillrating">Skill Rating </option>
+                <option value="Skillrating"> Rating Your Skills </option>
                 <option value="1"> 1</option>
                 <option value="2">2 </option>
                 <option value="3">3</option>
