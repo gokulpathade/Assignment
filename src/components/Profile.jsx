@@ -1,21 +1,23 @@
-// import React from 'react'
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-// import { Link } from "react-router-dom";
-// import{Form, Button, Container, Alert } from 'react-bootstrap';
-// import AppRegistrationSharpIcon from '@mui/icons-material/AppRegistrationSharp';
+import { useParams, useNavigate } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
-// import PersonAddSharpIcon from "@mui/icons-materia/PersonAddSharpIcon";
 import AppRegistrationSharpIcon from '@mui/icons-material/AppRegistrationSharp';
 import CancelPresentationSharpIcon from '@mui/icons-material/CancelPresentationSharp';
 
+import Navbar from "./Navbar";
 
-export default function AddEmployee() {
+
+export default function Profile() {
   //
-
-  const baseURL = "http://localhost:8080/api/AddEmployee";
+  const { id } = useParams();
   const navigate = useNavigate();
+
+
+  const baseURL = "http://localhost:8080/api" ; 
+
+
+  // const [id,             setid            ] = useState("");
   const [empName,        setEmpName            ] = useState("");
   const [empEmail,       setEmpEmail           ] = useState("");
   const [empCompanyName, setEmpCompanyName     ] = useState("");
@@ -28,7 +30,38 @@ export default function AddEmployee() {
   const [empCourse,        setEmpCourse         ] = useState("");
   const [empTechSkill,     setEmpTechSkill      ]     = useState("");
   const [skillRating,      setEmpSkillRating      ] = useState("");
-  const [password,       setPassword     ] = useState("");
+
+
+
+  useEffect(() => {
+    axios
+    .get(baseURL + "/EmpById/" + id)
+      .then((response) => {
+      const  Emp = response.data;
+      setEmpName(Emp.empName);
+      setEmpEmail(Emp.empEmail);
+      setEmpCompanyName(Emp.empCompanyName);
+  
+    setEmpDateJoing(Emp.empDateJoing);
+    
+    setEmpAddress(Emp.empAddress);
+      setEmpGender(Emp.empGender);
+      setEmpDateofBirth(Emp.empDateofBirth);
+  
+    setEmpMobileNumber(Emp.empMobileNumber);
+    setEmpAlterMoNum(Emp.empAlterMoNum);
+   
+    setEmpCourse(Emp.empCourse);
+      setEmpTechSkill(Emp.empTechSkill);
+    
+    setEmpSkillRating(Emp.skillRating);
+    })
+      .catch((error) => {
+        alert("Something went wrong" + error);
+      });
+  }, [id]);
+
+
 
 
   const nameChangeHandler = (event) => {
@@ -37,7 +70,7 @@ export default function AddEmployee() {
 
   const emailChangeHandler = (event) => {
     setEmpEmail(event.target.value);
-    //  baseURL = "http://localhost:8080/api/addEmp";
+ 
   };
   const companynameChangeHandler = (event) => {
     setEmpCompanyName(event.target.value);
@@ -70,54 +103,38 @@ export default function AddEmployee() {
   const skillratingChangeHandler = (event) => {
     setEmpSkillRating(event.target.value);
   };
-  const passwordChangeHandler = (event) => {
-    setPassword(event.target.value);
-  };
-  // const ChangeHandler=(event)=>{}
-
-  const submitActionHandler = (event) => {
-    event.preventDefault();
-    axios
-      .post(baseURL, {
-        empName: empName,
-        empEmail: empEmail,
-        empCompanyName: empCompanyName,
-        empDateJoing: empDateJoing,
-        empAddress: empAddress,
-        empGender: empGender,
-        empDateofBirth: empDateofBirth,
-        empMobileNumber: empMobileNumber,
-        empAlterMoNum: empAlterMoNum,
-        empCourse: empCourse,
-        empTechSkill: empTechSkill,
-        skillRating: skillRating,
-        password:password
-      })
-      .then((response) => {
-        alert("Employee data added successfully!");
-        cancelHandler();
-        navigate("./");
-      })
-      .catch((error) => {
-        alert("error===" + error);
-      });
-  };
+ 
+  // const submitActionHandler = (event) => {
+  //   event.preventDefault();
+  //   axios
+  //   .put(baseURL + "/UpdateEmployee/" + id ,
+  //   {
+  //       empName: empName,
+  //       empEmail: empEmail,
+  //       empCompanyName: empCompanyName,
+  //       empDateJoing: empDateJoing,
+  //       empAddress: empAddress,
+  //       empGender: empGender,
+  //       empDateofBirth: empDateofBirth,
+  //       empMobileNumber: empMobileNumber,
+  //       empAlterMoNum: empAlterMoNum,
+  //       empCourse: empCourse,
+  //       empTechSkill: empTechSkill,
+  //       skillRating: skillRating,
+  //     })
+  //     .then((response) => {
+  //       alert("Employee details updated successfully!");
+  //       cancelHandler();
+  //       navigate("/");
+  //     })
+  //     .catch((error) => {
+  //       alert("error===" + error);
+  //     });
+  // };
 
   // rest the values of register form
   const cancelHandler = () => {
-    setEmpName("");
-    setEmpEmail("");
-    setEmpCompanyName("");
-    setEmpDateJoing("");
-    setEmpAddress("");
-    setEmpGender("");
-    setEmpDateofBirth("");
-    setEmpMobileNumber("");
-    setEmpAlterMoNum("");
-    setEmpCourse("");
-    setEmpTechSkill("");
-    setEmpSkillRating("");
-    setPassword("");
+   navigate("/")
   };
 
   //
@@ -162,6 +179,7 @@ export default function AddEmployee() {
 
   return (
     <div>
+      <Navbar/>
       <link
         href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         rel="stylesheet"
@@ -175,17 +193,17 @@ export default function AddEmployee() {
       />
       {/*---- Include the above in your HEAD tag --------*/}
       <div className="container">
-        <form
+        <form id={id}
           className="form-horizontal"
           role="form"
-          onSubmit={submitActionHandler}
+          // onSubmit={submitActionHandler}
           // action="/AddEmp.java"
-          
+          method=""
         >
-          <h2>Registration</h2>
+          <h2>Profile Detail</h2>
           <div className="form-group">
             <label htmlFor="firstName" className="col-sm-3 control-label">
-              Name*
+              Name
             </label>
             <div className="col-sm-9">
               <input
@@ -241,7 +259,7 @@ export default function AddEmployee() {
           </div>
           <div className="form-group">
             <label htmlFor="birthDate" className="col-sm-3 control-label">
-              Date of Joing
+              Date of Joing*
             </label>
             <div className="col-sm-9">
               <input
@@ -267,7 +285,7 @@ export default function AddEmployee() {
           {/* </div> */}
           <div className="form-group">
             <label htmlFor="Address" className="col-sm-3 control-label">
-              Address*
+              Address
             </label>
             <div className="col-sm-9">
               <input
@@ -354,13 +372,13 @@ export default function AddEmployee() {
                 className="form-control"
                 value={empDateofBirth}
                 onChange={dobChangeHandler}
-                    required
+
               />
             </div>
           </div>
           <div className="form-group">
             <label htmlFor="phoneNumber" className="col-sm-3 control-label">
-              Phone Number*{" "}
+              Phone number{" "}
             </label>
             <div className="col-sm-9">
               <input 
@@ -382,7 +400,7 @@ export default function AddEmployee() {
               htmlFor="AlterphoneNumber"
               className="col-sm-3 control-label"
             >
-              Alternative Number{" "}
+              Alternative Phone number{" "}
             </label>
             <div className="col-sm-9">
               <input
@@ -398,68 +416,9 @@ export default function AddEmployee() {
               {/* <span className="help-block">Your phone number won't be disclosed anywhere </span> */}
             </div>
           </div>
-
-
-          <div className="form-group">
-            <label
-              htmlFor="AlterphoneNumber"
-              className="col-sm-3 control-label"
-            >
-              Alternative Number{" "}
-            </label>
-            <div className="col-sm-9">
-              <input
-               min={10}
-               max={12}
-                type="Password"
-                id="Password"
-                placeholder="Enter Your Password"
-                className="form-control"
-                value={password}
-                onChange={passwordChangeHandler}
-              />
-              {/* <span className="help-block">Your phone number won't be disclosed anywhere </span> */}
-            </div>
-          </div>
-
-
-          {/* <div className="form-group">
-            <label
-              htmlFor="AlterphoneNumber"
-              className="col-sm-3 control-label"
-            >
-              Alternative Number{" "}
-            </label>
-            <div className="col-sm-9">
-              <input
-               min={10}
-               max={12}
-                type="Password"
-                id="Password"
-                placeholder="Enter Your Password"
-                className="form-control"
-                value={cpassword}
-                onChange={cpasswordChangeHandler}
-              />
-              {/* <span className="help-block">Your phone number won't be disclosed anywhere </span> */}
-            {/* </div>
-          </div> */}
-
-
-
-
-
-
-
-
-
-
-
-
-
           <div className="form-group">
             <label htmlFor="Course" className="col-sm-3 control-label">
-             Edu / Course
+              Course
             </label>
             <div className="col-sm-9">
               {/* <label> </label> */}
@@ -489,7 +448,7 @@ export default function AddEmployee() {
           </div>
           <div className="form-group">
             <label htmlFor="technicalskill" className="col-sm-3 control-label">
-               Skills*
+              Technical Skills
             </label>
             <div className="col-sm-9">
               {/* <label className="reglabel">Tech Skill :</label> */}
@@ -523,7 +482,7 @@ export default function AddEmployee() {
               htmlFor="TechnicalSkillRating"
               className="col-sm-3 control-label"
             >
-             Skill Rating *
+              Technical Skills rating
             </label>
             <div className="col-sm-9">
               <select
@@ -532,7 +491,7 @@ export default function AddEmployee() {
                 onChange={skillratingChangeHandler}
                 required 
               >
-                <option value="Skillrating"> Rating Your Skills </option>
+                <option value="Skillrating">Skill Rating </option>
                 <option value="1"> 1</option>
                 <option value="2">2 </option>
                 <option value="3">3</option>
@@ -574,7 +533,7 @@ export default function AddEmployee() {
           <IconButton>
         <AppRegistrationSharpIcon />
       </IconButton>
-            Sign Up
+          Update 
           </button>
          
 

@@ -7,6 +7,39 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+
+// const  App = (props) => (
+//   <ReactTable
+//     PaginationComponent={Pagination}
+//     data={makeData()}
+//     columns={[
+//       {
+//         Header: "First Name",
+//         accessor: "firstName"
+//       },
+//       {
+//         Header: "Last Name",
+//         accessor: "lastName"
+//       },
+//       {
+//         Header: "Age",
+//         accessor: "age"
+//       },
+//       {
+//         Header: "Status",
+//         accessor: "status"
+//       },
+//       {
+//         Header: "Visits",
+//         accessor: "visits"
+//       }
+//     ]}
+//   />
+// );
+
+
+
 root.render(
   <React.StrictMode>
     <App />

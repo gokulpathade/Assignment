@@ -1,20 +1,27 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 
 
 
-  
-}
+.body {
+  display: block;
+  background: linear-gradient(360deg,
+  #ca5e46 20%,
+  /* #f57255 20%, #9c0202df 50%, */
+  #982103 40%, #1a22bc 100%,
+  /* #327AB2 60%, #327AB2 80%, */
+  #0a2282 80%);
+  /* width: 100%; */
+  /* height: 100%; */
+  /* background-color: rgb(37, 21, 23); */
+  text-align: center;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+  display: block;
+  position: relative; /* Add this to make the pseudo-element positioning work */
+  text-align: center;
+
+
+
+
+} 
 
 
 
@@ -66,20 +73,6 @@ lebal{
 
 
 
-.body {
-  background-image: linear-gradient(360deg,
-  #ca5e46 20%,
-  /* #f57255 20%, #9c0202df 50%, */
-  #982103 40%, #1a22bc 100%,
-  /* #327AB2 60%, #327AB2 80%, */
-  #0a2282 80%);
-  width: 100%;
-  height: 100%;
-  /* background-color: rgb(37, 21, 23); */
-  text-align: center;
-}
-
-
 
 /* footer page css */
 footer{
@@ -94,25 +87,22 @@ footer{
 
 /* registration form css */
 
-
-body {
-  /* background: url('https://static-communitytable.parade.com/wp-content/uploads/2014/03/rethink-target-heart-rate-number-ftr.jpg') fixed; */
- background-size: block;
-}
-
 *[role="form"] {
+  box-shadow: #f8f8f8 ;
+box-shadow: 3px 2px 4px 4px;
  max-width: 530px;
  padding: 15px;
  margin: 0 auto;
  border-radius: 0.3em;
- background-color: #e87272;
+ background-color: #ebdddd;
 }
 
 *[role="form"] h2 { 
  font-family: 'Open Sans' , sans-serif;
  font-size: 40px;
  font-weight: 600;
-
+ box-shadow: #f8f8f8 ;
+ box-shadow: 3px 2px 4px 4px;
  /* color: #271010; */
  margin-top: 5%;
  text-align: center;
@@ -135,7 +125,7 @@ body {
   #F09741 40%, #F09741 60%,
   #327AB2 60%, #327AB2 80%,
   #3A94F6 80%); */
-  background:#333;
+  background:#eae6e6;
 }
 #login {
 -webkit-perspective: 1000px;
@@ -209,3 +199,88 @@ color:#5cb85c;
       border-right-style: none;
       border-right-width: medium;
 }
+
+
+
+
+
+.custom-icon-button {
+  width: 50px; /* Set the desired width */
+  height: 20px; /* Set the desired height */
+}
+
+
+
+
+
+
+
+.container {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.container td, .container th {
+  border: 0px solid #ddd;
+  padding:0px;
+}
+
+.container tr:nth-child(even){background-color: #f2f2f2;}
+
+.container tr:hover {background-color: #ddd;}
+
+.container th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+
+
+
+.h1{
+  background-color: #fff;
+  text-transform: uppercase;
+}
+
+
+
+
+
+
+
+/* SIDE NAV BAR  */
+
+
+.css-12i7wg6-MuiPaper-root-MuiDrawer-paper{
+  background: linear-gradient(360deg,
+  #ca5e46 20%,
+  /* #f57255 20%, #9c0202df 50%, */
+  #982103 40%, #1a22bc 100%,
+  /* #327AB2 60%, #327AB2 80%, */
+  #0a2282 80%)!important;
+  color: white !important;
+}
+
+
+
+
+
+/* NAVBAR CSS HERE */
+
+
+.css-nz47g-MuiPaper-root-MuiAppBar-root{
+  background: linear-gradient(360deg,
+  #250490 20%,
+  /* #f57255 20%, #9c0202df 50%, */
+  /* #982103 40%, #1a22bc 100%, */
+  /* #327AB2 60%, #327AB2 80%, */
+  #b71911 80%)!important;
+  color: white !important;
+}
+/* 
+.css-zxdg2z {
+  padding: 260px !important;
+} */

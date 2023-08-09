@@ -8,57 +8,64 @@ import Dashboard from "./Dashboard";
 
 
 
-function Login() {
+function Email() {
+
+    const [empName,       setEmpName           ] = useState("");
 
   const [empEmail,       setEmpEmail           ] = useState("");
-  const [password,       setPassword     ] = useState("");
+//   const [text,       setText     ] = useState("");
   const navigate = useNavigate();
   // const history = useHistory();
-  const baseURL = "http://localhost:8080/api/login";
+  const baseURL = "http://localhost:8080/api/sendBirthday";
 
+
+
+
+  const nameChangeHandler = (event) => {
+    setEmpName(event.target.value);
+  };
 
   const emailChangeHandler = (event) => {
            setEmpEmail(event.target.value);
     //  baseURL = "http://localhost:8080/api/addEmp";
   };
 
-  const passwordChangeHandler = (event) => {
-    setPassword(event.target.value);
-  };
+//   const textChangeHandler = (event) => {
+//     setText(event.target.value);
+//   };
 
   const submitActionHandler = (event) => {
     event.preventDefault();
     axios
       .post(baseURL, {
+        empName: empName,
         empEmail: empEmail,
-        password: password
+    //   text:text
       })
       .then((response) => {
-        const { employeeName, authToken } = response.data;
-         // Change the property names according to your API response
-        localStorage.setItem('employeeName', employeeName);
-        localStorage.setItem('authToken', authToken);
-        navigate("/");
+        alert("Email send successfully to the Employee!");
+        cancelHandler();
+        navigate("/")
+        // history.push("/dashboard");
       })
       .catch((error) => {
         alert("error===" + error);
       });
   };
-  
 
 
   const cancelHandler = () => {
-  
+    setEmpName("");
     setEmpEmail("");
   
-    setPassword("");
+    // setText("");
   };
 
   return (
     <div>
         <div>
 
-    {/*---- Include the above in your HEAD tag --------*/}
+    ---- Include the above in your HEAD tag --------
     <link
       href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
       rel="stylesheet"
@@ -73,8 +80,27 @@ function Login() {
         // action="/AddEmp.java"
         
       >
-        <h2 className='h2'>Login</h2>
+        <h2 className='h2'>Write Email</h2>
         <br/><br/>
+
+        <div className="form-group">
+            <label htmlFor="firstName" className="col-sm-3 control-label">
+              Name*
+            </label>
+            <div className="col-sm-9">
+              <input
+                type="text"
+                id="Name"
+                placeholder="Enter Your Full Name"
+                className="form-control"
+                value={empName}
+                onChange={nameChangeHandler}
+                autofocus
+             required
+              />
+            </div>
+          </div>
+
     <div className="form-group">
             <label htmlFor="email" className="col-sm-3 control-label" >
               Email{" "}
@@ -93,32 +119,32 @@ function Login() {
           </div>
         {/* Password input */}
 
-        <div className="form-group">
-            <label htmlFor="email" className="col-sm-3 control-label" >
-            Password{" "}
+        {/* <div className="form-group">
+            <label htmlFor="email" className="col-sm-3 row-cols-3 control-label" >
+            Email{" "}
             </label>
             <div className="col-sm-9">
               <input
-                type="password"
-                id="password"
-                placeholder="Password"
+                type="text"
+                id="text"
+                placeholder="Text"
                 className="form-control"
-                name="password"
+                name="Text"
                 // value={password}
-                onChange={passwordChangeHandler}
+                onChange={textChangeHandler}
                required  />
             </div>
-          </div>
+          </div> */}
 
 
         {/* 2 column grid layout for inline styling */}
         <div className="row mb-4">
           <div className="col d-flex justify-content-center">
             {/* Checkbox */}
-            <div className="form-check">
-              <input className="form-check-input" type="checkbox" defaultValue id="form2Example31" defaultChecked />
-              <label className="form-check-label" htmlFor="form2Example31"> Remember me </label>
-            </div>
+            {/* <div className="form-check">
+              {/* <input className="form-check-input" type="checkbox" defaultValue id="form2Example31" defaultChecked /> */}
+              {/* <label className="form-check-label" htmlFor="form2Example31"> Remember me </label> */}
+            {/* </div> */}
           </div>
           <div className="col">
             {/* Simple link */}
@@ -128,7 +154,7 @@ function Login() {
         {/* Submit button */}
        
         <button type="rest" className="btn btn-danger btn-inline mt-2 mx-2 mb-4">Cancel</button>
-        <button type="submit" className="btn btn-primary btn-inline mt-2 mx-2 mb-4">Sign in</button>
+        <button type="submit" className="btn btn-primary btn-inline mt-2 mx-2 mb-4">Send Email</button>
         {/* Register buttons */}
         <div className="text-center">
           <p>Not a member ? <a href="./AddEmployee.jsx">  <Link className="btn btn-blue mx-2 shadow-lg" to="/AddEmployee">
@@ -159,4 +185,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Email
